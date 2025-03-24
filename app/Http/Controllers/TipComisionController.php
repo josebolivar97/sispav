@@ -64,8 +64,10 @@ class TipComisionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipComision $tipcomision)
+    public function destroy(TipComision $tipocomision)
     {
-        //
+        $tipocomision->delete();
+
+        return back()->with('eliminar', 'delete');
     }
 }

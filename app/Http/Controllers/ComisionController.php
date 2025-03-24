@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comision;
+use App\Models\TipComision;
 use Illuminate\Http\Request;
 
 class ComisionController extends Controller
@@ -21,7 +22,8 @@ class ComisionController extends Controller
      */
     public function create()
     {
-        //
+        $tipocomision=TipComision::all();
+        return view('comision.create', compact('tipocomision'));
     }
 
     /**

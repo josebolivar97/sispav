@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <a class="btn btn-info mb-3" href="{{ route('usuarios.create') }}">Registro de Comisión</a>
+    <a class="btn btn-info mb-3" href="{{ route('comision.create') }}">Registro de Comisión</a>
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
