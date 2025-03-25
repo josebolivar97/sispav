@@ -48,7 +48,6 @@ class TipComisionController extends Controller
      */
     public function edit(TipComision $tipocomision)
     {
-        // dd($tipocomision);
         return view('tipocomision.edit', compact('tipocomision'));
     }
 

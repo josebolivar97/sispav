@@ -11,10 +11,6 @@
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
                 <div class="card-body">
-                    {{-- <input type="text" name="id" value="{{ $tipcomision->id }}">
-                    {{ dd($tipcomision) }}
-                    <p>{{$tipComision[1]}}</p> --}}
-
                     <form action="{{ route('tipocomision.update', $tipocomision->id) }}" method="post">
                         @csrf
                         @method('put')

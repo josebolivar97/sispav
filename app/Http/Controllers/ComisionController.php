@@ -59,7 +59,8 @@ class ComisionController extends Controller
      */
     public function update(Request $request, Comision $comision)
     {
-        //
+        $comision->update($request->all());
+        return redirect()->route('comision.index');
     }
 
     /**
@@ -67,6 +68,7 @@ class ComisionController extends Controller
      */
     public function destroy(Comision $comision)
     {
-        //
+        $comision->delete();
+        return back()->with('eliminar', 'delete');
     }
 }
