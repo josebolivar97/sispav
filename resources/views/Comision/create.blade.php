@@ -22,14 +22,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-6 mt-2">
-                                <label>Tipo de Comisión</label>
-                                <input type="text" class="form-control" name="id_tipcomisions"
-                                    value="{{ old('id_tipcomisions') }}">
-                                @error('id_tipcomisions')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
+
                             <div class="form-group col-md-6 mt-2">
                                 <label for="inputState">Tipo de Comisión</label>
                                 <select id="" class="form-control" name="id_tipcomisions">

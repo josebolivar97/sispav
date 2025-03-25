@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comision extends Model
 {
-    protected $fillable = ['nombre', 'id_tipcomisions'];
+    protected $fillable = ['nombrecomision', 'id_tipcomisions'];
 
     public function tipoComision()
     {

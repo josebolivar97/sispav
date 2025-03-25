@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComisionRequest;
 use App\Models\Comision;
 use App\Models\TipComision;
 use Illuminate\Http\Request;
+
 
 class ComisionController extends Controller
 {
@@ -13,8 +15,8 @@ class ComisionController extends Controller
      */
     public function index()
     {
-        $comision=Comision::all();
-        return view('comision.index',compact('comision'));
+        $comision = Comision::with('tipocomision')->get();
+        return view('comision.index', compact('comision'));
     }
 
     /**
@@ -22,16 +24,17 @@ class ComisionController extends Controller
      */
     public function create()
     {
-        $tipocomision=TipComision::all();
+        $tipocomision = TipComision::all();
         return view('comision.create', compact('tipocomision'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComisionRequest $request)
     {
-        //
+        Comision::create($request->all());
+        return redirect()->route('comision.index')->with('success', 'Usuario creado correctamente.');
     }
 
     /**
@@ -47,7 +50,8 @@ class ComisionController extends Controller
      */
     public function edit(Comision $comision)
     {
-        //
+        $tiposcomision = TipComision::all(); // Obtener todos los tipos de comisión
+        return view('comision.edit', compact('comision', 'tiposcomision'));
     }
 
     /**

@@ -22,12 +22,12 @@
                     <tbody>
                         @foreach ($comision as $part)
                             <tr>
-                                <td>{{ $part->name }}</td>
-                                <td>{{ $part->email }}</td>
+                                <td>{{ $part->nombrecomision }}</td>
+                                <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo'}}</td>
                                 <td width="140px">
-                                    <a href="{{ route('usuarios.edit', $part->id) }}"
+                                    <a href="{{ route('comision.edit', $part->id) }}"
                                         class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                                    <form action="{{ route('usuarios.destroy', $part->id) }}" method="post"
+                                    <form action="{{ route('comision.destroy', $part->id) }}" method="post"
                                         onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
                                         class="d-inline"> @csrf @method('delete') <button type="submit"
                                             class="btn btn-outline-danger btn-sm"><i
