@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRegistroRequest;
+use App\Models\Evento;
 use App\Models\Participante;
 use App\Models\Registro;
 use Illuminate\Http\Request;
@@ -22,15 +24,18 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        return view('registro.create');
+        $evento = Evento::all();
+        return view('registro.create', compact('evento'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRegistroRequest $request)
     {
-        //
+        Registro::create($request->all());
+
+        return view('registro.index', compact('participantes', 'eventos'));
     }
 
     /**

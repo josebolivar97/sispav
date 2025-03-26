@@ -12,4 +12,9 @@ class Comision extends Model
     {
         return $this->belongsTo(TipComision::class, 'id_tipcomisions');
     }
+
+    public function participante()
+    {
+        return $this->hasMany(Participante::class, 'id_comision');
+    }
 }

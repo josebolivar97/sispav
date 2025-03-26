@@ -11,7 +11,7 @@
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{-- {{ route('registro.create') }} --}}" method="post">
+                    <form action="{{ route('registro.create') }}" method="post">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
@@ -31,21 +31,23 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6 mt-2">
-                                <label for="formFile" class="form-label">Agregar PDF del Certificado</label>
-                                <input class="form-control" name   ="pdf_reconocimiento" id="formFile"
-                                    value="{{ old('pdf_reconocimiento') }}">
-                                @error('pdf_reconocimiento')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            {{-- <div class="form-group col-md-6 mt-2">
-                                <label for="inputState">Tipo de Comisión</label>
-                                <select id="" class="form-control" name="id_tipcomisions">
-                                    @foreach ($tipocomision as $rol)
-                                        <option value="{{ $rol->id }}">{{ $rol->nom_tipcomision }}</option>
+                                <label for="inputState">Evento</label>
+                                <select id="" class="form-control" name="id_comision">
+                                    @foreach ($comision as $rol)
+                                        <option value="{{ $rol->id }}">{{ $rol->nombrecomision }}</option>
                                     @endforeach
                                 </select>
-                            </div> --}}
+                            </div>
+                            <div class="form-group col-md-6 mt-2">
+                                <label for="formFile" class="form-label">Agregar PDF del Certificado</label>
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                            aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar Archivo</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row justify-content-center">
                             <a href="{{ route('registro.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>

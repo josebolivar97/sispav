@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreParticipanteRequest;
+use App\Models\Comision;
 use App\Models\Participante;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
@@ -21,14 +22,15 @@ class ParticipanteController extends Controller
 
     public function create()
     {
-        return view('participante.create');
+        $comision = Comision::all();
+        return view('participante.create', compact('comision'));
     }
 
     public function store(StoreParticipanteRequest $request)
     {
         Participante::create($request->all());
 
-        return redirect()->route('participantes.index');
+        return redirect()->route('participantes.index')->with('success', 'Usuario creado correctamente.');
     }
 
     public function show(Participante $participante)

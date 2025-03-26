@@ -15,16 +15,19 @@
                     <thead class="thead-dark text-center">
                         <tr>
                             <th>Nombre</th>
-                            <th>Actividad</th>
+                            <th>Profesión</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($comision as $part)
+                        @foreach ($participante as $part)
                             <tr>
-                                <td>{{ $part->nombrecomision }}</td>
-                                <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo'}}</td>
+                                <td>{{ $part->nombres }}</td>
+                                <td>{{ $part->profesion }}</td>
+                                {{-- <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo'}}</td> --}}
                                 <td width="140px">
+                                    <a href="{{ route('registro.create', $part->id) }}"
+                                        class="btn btn-outline-primary btn-sm"><i class="fas fa-bolt"></i></a>
                                     <a href="{{ route('registro.edit', $part->id) }}"
                                         class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
                                     <form action="{{ route('registro.destroy', $part->id) }}" method="post"
@@ -34,7 +37,7 @@
                                                 class="fas fa-lg fa-trash"></i></button></form>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

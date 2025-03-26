@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('apellido_materno', 100);
             $table->date('f_nacimiento');
             $table->string('l_nacimiento', 50);
-            $table->string('comision', 50);
             $table->string('profesion', 50);
             $table->string('l_residencia', 50);
             $table->string('organizacion', 50);

@@ -66,12 +66,12 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6 mt-2">
-                                <label>Comision</label>
-                                <input type="text" class="form-control" name="comision" value="{{ old('comision') }}">
-
-                                @error('comision')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <label for="inputState">Comisión</label>
+                                <select id="" class="form-control" name="id_comision">
+                                    @foreach ($comision as $rol)
+                                        <option value="{{ $rol->id }}">{{ $rol->nombrecomision }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-md-6 mt-2">
                                 <label>Profesion</label>

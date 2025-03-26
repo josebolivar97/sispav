@@ -28,11 +28,11 @@ class StoreParticipanteRequest extends FormRequest
             'apellido_materno' => 'required|max:100',
             'f_nacimiento' => 'required|date',
             'l_nacimiento' => 'required|max:50',
-            'comision' => 'required|max:50',
             'profesion' => 'required|max:50',
             'l_residencia' => 'required|max:50',
             'organizacion' => 'required|max:50',
             'celular' => 'required|max:50',
+            'id_comision' => 'required|max:50',
         ];
     }
 }
