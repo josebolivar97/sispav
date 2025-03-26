@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participante;
 use App\Models\Registro;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        //
+        $participante = Participante::all();
+        return view('registro.index', compact('participante'));
     }
 
     /**
@@ -20,7 +22,7 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        //
+        return view('registro.create');
     }
 
     /**

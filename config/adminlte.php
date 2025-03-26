@@ -302,7 +302,7 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Busqueda',
             'topnav_right' => false,
         ],
         [
@@ -313,7 +313,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Busqueda',
         ],
         [
             'text' => 'blog',
@@ -329,6 +329,11 @@ return [
         [
             'text' => 'Roles',
             'route' => 'roles.index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Registro',
+            'route' => 'registro.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
