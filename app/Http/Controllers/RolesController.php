@@ -89,6 +89,7 @@ class RolesController extends Controller
         $rol=Role::find($id);
         $rol->name=$request->input('nombre');
         $rol->save();
+        
         $rol->syncPermissions($request->input('permisos'));
         return redirect()->route('roles.index');
     }

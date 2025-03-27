@@ -26,7 +26,7 @@
                                 <td>{{ $part->profesion }}</td>
                                 {{-- <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo'}}</td> --}}
                                 <td width="140px">
-                                    <a href="{{ route('registro.create', $part->id) }}"
+                                    <a href="{{ route('particiante.registro.edit', $part->id) }}"
                                         class="btn btn-outline-primary btn-sm"><i class="fas fa-bolt"></i></a>
                                     <a href="{{ route('registro.edit', $part->id) }}"
                                         class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>

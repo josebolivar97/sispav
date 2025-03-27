@@ -24,8 +24,8 @@ class StoreRegistroRequest extends FormRequest
         return [
             'institucion' => 'required|max:100',
             'nom_reconocimiento' => 'required|max:15',
-            'pdf_reconocimiento' => 'nullable|file|mimes:pdf|max:1025',
-            'id_participante' => 'required|max:100',
+            // 'pdf_reconocimiento' => 'nullable|file|mimes:pdf|max:1025',
+            // 'id_participante' => 'required|max:100',
             'id_evento' => 'required|max:100',
         ];
     }

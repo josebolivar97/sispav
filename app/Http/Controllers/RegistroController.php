@@ -24,7 +24,9 @@ class RegistroController extends Controller
      */
     public function create()
     {
+
         $evento = Evento::all();
+        // $participante = Participante::all();
         return view('registro.create', compact('evento'));
     }
 
@@ -49,9 +51,13 @@ class RegistroController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Registro $registro)
+    public function edit(Participante $registro)
     {
         //
+
+        dd($registro);
+        return view('registro.create');
+
     }
 
     /**
@@ -69,4 +75,6 @@ class RegistroController extends Controller
     {
         //
     }
+
+
 }

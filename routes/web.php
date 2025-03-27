@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TipComisionController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Participante;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,7 +24,10 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
 Route::resource('roles', RolesController::class);
+Route::post('participantes/{participante}/registro',[ParticipanteController::class,'particianteRegistro'])->name('particiante.registro.store');
+Route::get('participantes/{participante}/regitro-edit',[ParticipanteController::class,'partisanteVista'])->name('particiante.registro.edit');
 Route::resource('participantes', ParticipanteController::class);
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('comision', ComisionController::class);

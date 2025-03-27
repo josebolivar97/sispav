@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreParticipanteRequest;
+use App\Http\Requests\StoreRegistroRequest;
 use App\Models\Comision;
+use App\Models\Evento;
 use App\Models\Participante;
+use App\Models\Registro;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -35,7 +38,7 @@ class ParticipanteController extends Controller
 
     public function show(Participante $participante)
     {
-
+        // dd($participante);
         return view('participante.show', compact('participante'));
     }
 
@@ -55,5 +58,37 @@ class ParticipanteController extends Controller
         $participante->delete();
 
         return back()->with('eliminar', 'delete');
+    }
+
+    public function partisanteVista(Participante $participante)
+    {
+        // dd($participante);
+        $eventos = Evento::all();
+        // dd($eventos);
+        return view('registro.create', compact('participante', 'eventos'));
+    }
+
+    public function particianteRegistro(Participante $participante, StoreRegistroRequest $request)
+    {
+        // dd($request->institucion);
+
+        // Registro::create([
+        //     'institucion' => $request->institucion,
+        //     'nom_reconocimiento' => $request->nom_reconocimiento,
+        //     'id_participante' => $participante->id,
+        //     'id_evento' => $request->id_evento,
+        // ]);
+        Registro::create([
+            ...$request->all(),
+            'id_participante' => $participante->id,
+        ]);
+
+
+
+        // $array = $request;
+        // $array
+
+
+        return redirect()->route('registro.index')->with('success', 'Registro creado correctamente.');
     }
 }

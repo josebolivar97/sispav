@@ -3,7 +3,7 @@
 @section('title', 'Crear Estudiante')
 
 @section('content_header')
-    <h1 class="text-center font-weight-bold text-uppercase">Registrar Tipo de Comisión</h1>
+    <h1 class="text-center font-weight-bold text-uppercase">Registrar Actividad</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,8 @@
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('registro.create') }}" method="post">
+
+                    <form action="{{ route('particiante.registro.store',$participante->id) }}" method="post">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
@@ -32,9 +33,9 @@
                             </div>
                             <div class="form-group col-md-6 mt-2">
                                 <label for="inputState">Evento</label>
-                                <select id="" class="form-control" name="id_comision">
-                                    @foreach ($comision as $rol)
-                                        <option value="{{ $rol->id }}">{{ $rol->nombrecomision }}</option>
+                                <select id="" class="form-control" name="id_evento">
+                                    @foreach ($eventos as $evento)
+                                        <option value="{{ $evento->id }}">{{ $evento->nom_evento }}</option>
                                     @endforeach
                                 </select>
                             </div>
