@@ -71,12 +71,13 @@
                             </div>
                             <div class="form-group col-md-6 mt-2">
                                 <label>Comision</label>
-                                <input type="text" class="form-control" name="comision"
-                                    value="{{ old('comision', $participante->comision) }}">
-
-                                @error('comision')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <select class="form-control" name="id_comision">
+                                    @foreach($comision as $comi)
+                                    <option value="{{ $comi->id }}" {{ $participante->id_comision == $comi->id ? 'selected' : '' }}>
+                                        {{ $comi->nombrecomision }}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-md-6 mt-2">
                                 <label>Profesion</label>

@@ -18,7 +18,7 @@ class ParticipanteController extends Controller
 
     public function index()
     {
-        $participante = Participante::all();
+        $participante = Participante::with('comision')->get();
 
         return view('Participante.index', compact('participante'));
     }
@@ -44,7 +44,8 @@ class ParticipanteController extends Controller
 
     public function edit(Participante $participante)
     {
-        return view('participante.edit', compact('participante'));
+        $comision = Comision::all();
+        return view('participante.edit', compact('participante','comision'));
     }
 
     public function update(Request $request, Participante $participante)

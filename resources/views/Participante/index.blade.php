@@ -25,13 +25,13 @@
                                 <tr>
                                     <td>{{ $part->dni }}</td>
                                     <td>{{ $part->nombres }} {{ $part->apellido_paterno }} {{ $part->apellido_materno }}</td>
-                                    <td>{{ $part->comision }}</td>
+                                    <td>{{ $part->comision->nombrecomision }}</td>
                                     <td width="140px">
-                                        <a href="{{ route('usuarios.show', $part->id) }}"
-                                            class="btn btn-outline-success btn-sm"><i class="fas fa-clipboard"></i></a>
-                                        <a href="{{ route('usuarios.edit', $part->id) }}"
+                                        {{-- <a href="{{ route('usuarios.show', $part->id) }}"
+                                            class="btn btn-outline-success btn-sm"><i class="fas fa-clipboard"></i></a> --}}
+                                        <a href="{{ route('participantes.edit', $part->id) }}"
                                             class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                                        <form action="{{ route('usuarios.destroy', $part->id) }}" method="post"
+                                        <form action="{{ route('participantes.destroy', $part->id) }}" method="post"
                                             class="d-inline"> @csrf @method('delete') <button type="submit"
                                                 class="btn btn-outline-danger btn-sm"><i
                                                     class="fas fa-lg fa-trash"></i></button></form>

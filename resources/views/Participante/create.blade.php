@@ -73,6 +73,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            
                             <div class="form-group col-md-6 mt-2">
                                 <label>Profesion</label>
                                 <input type="text" class="form-control" name="profesion" value="{{ old('profesion') }}">
