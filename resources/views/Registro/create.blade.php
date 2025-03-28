@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{ route('particiante.registro.store',$participante->id) }}" method="post">
+                    <form action="{{ route('participante.registro.store',$participante->id) }}" method="post">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
@@ -43,7 +43,7 @@
                                 <label for="formFile" class="form-label">Agregar PDF del Certificado</label>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                        <input type="file" class="custom-file-input" name="pdf_reconocimiento" id="inputGroupFile01"
                                             aria-describedby="inputGroupFileAddon01">
                                         <label class="custom-file-label" for="inputGroupFile01">Seleccionar Archivo</label>
                                     </div>

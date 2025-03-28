@@ -61,7 +61,7 @@ class ParticipanteController extends Controller
         return back()->with('eliminar', 'delete');
     }
 
-    public function partisanteVista(Participante $participante)
+    public function partisanteCreate(Participante $participante)
     {
         // dd($participante);
         $eventos = Evento::all();
@@ -69,27 +69,26 @@ class ParticipanteController extends Controller
         return view('registro.create', compact('participante', 'eventos'));
     }
 
-    public function particianteRegistro(Participante $participante, StoreRegistroRequest $request)
+    public function participanteRegistro(Participante $participante, StoreRegistroRequest $request)
     {
-        // dd($request->institucion);
 
-        // Registro::create([
-        //     'institucion' => $request->institucion,
-        //     'nom_reconocimiento' => $request->nom_reconocimiento,
-        //     'id_participante' => $participante->id,
-        //     'id_evento' => $request->id_evento,
-        // ]);
-        Registro::create([
-            ...$request->all(),
-            'id_participante' => $participante->id,
-        ]);
+        // Obtener todos los datos del request
+    $data = $request->all();
 
+    // Asignar el id del participante
+    $data['id_participante'] = $participante->id;
 
+    // Subir el archivo PDF si existe
+    if ($request->hasFile('pdf_reconocimiento')) {
+        // Guardar en la carpeta 'public/pdfs' y obtener el nombre del archivo
+        $path = $request->file('pdf_reconocimiento')->store('pdfs', 'public');
+        $data['pdf_reconocimiento'] = $path; // Guardamos la ruta en la BD
+    }
 
-        // $array = $request;
-        // $array
+    dd($request->all(), $request->file('pdf_reconocimiento'), $request->validated());
+    // Crear el registro con los datos modificados
+    Registro::create($data);
 
-
-        return redirect()->route('registro.index')->with('success', 'Registro creado correctamente.');
+    return redirect()->route('registro.index')->with('success', 'Registro creado correctamente.');
     }
 }
