@@ -85,7 +85,7 @@ class ParticipanteController extends Controller
         $data['pdf_reconocimiento'] = $path; // Guardamos la ruta en la BD
     }
 
-    dd($request->all(), $request->file('pdf_reconocimiento'), $request->validated());
+    // dd($request->all(), $request->file('pdf_reconocimiento'), $request->validated());
     // Crear el registro con los datos modificados
     Registro::create($data);
 

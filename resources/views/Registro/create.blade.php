@@ -12,44 +12,46 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{ route('participante.registro.store',$participante->id) }}" method="post">
+                    <form action="{{ route('participante.registro.store', $participante->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre de la Institución</label>
-                                <input type="text" class="form-control" name="institucion"
-                                    value="{{ old('institucion') }}">
+                                <input type="text" class="form-control" name="institucion" value="{{ old('institucion') }}">
                                 @error('institucion')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre de Reconocimiento</label>
-                                <input type="text" class="form-control" name="nom_reconocimiento"
-                                    value="{{ old('nom_reconocimiento') }}">
+                                <input type="text" class="form-control" name="nom_reconocimiento" value="{{ old('nom_reconocimiento') }}">
                                 @error('nom_reconocimiento')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+
                             <div class="form-group col-md-6 mt-2">
                                 <label for="inputState">Evento</label>
-                                <select id="" class="form-control" name="id_evento">
+                                <select class="form-control" name="id_evento">
                                     @foreach ($eventos as $evento)
                                         <option value="{{ $evento->id }}">{{ $evento->nom_evento }}</option>
                                     @endforeach
                                 </select>
+                                @error('id_evento')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
+
                             <div class="form-group col-md-6 mt-2">
                                 <label for="formFile" class="form-label">Agregar PDF del Certificado</label>
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="pdf_reconocimiento" id="inputGroupFile01"
-                                            aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar Archivo</label>
-                                    </div>
-                                </div>
+                                <input type="file" class="form-control-file" name="pdf_reconocimiento">
+                                @error('pdf_reconocimiento')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="row justify-content-center">
                             <a href="{{ route('registro.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
                             <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
