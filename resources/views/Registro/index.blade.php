@@ -24,17 +24,18 @@
                             <tr>
                                 <td>{{ $part->nombres }}</td>
                                 <td>{{ $part->profesion }}</td>
-                                {{-- <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo'}}</td> --}}
-                                <td width="140px">
+                                <td width="100px">
+                                    <a href="{{ route('participante.registro.show', $part->id) }}"
+                                        class="btn btn-outline-info btn-sm"><i class="fas fa-address-card"></i></a>
                                     <a href="{{ route('participante.registro.create', $part->id) }}"
-                                        class="btn btn-outline-primary btn-sm"><i class="fas fa-bolt"></i></a>
-                                    <a href="{{ route('registro.edit', $part->id) }}"
-                                        class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                                    <form action="{{ route('registro.destroy', $part->id) }}" method="post"
+                                        class="btn btn-outline-primary btn-sm"><i class="fas fa-plus-square"></i></a>
+                                    {{-- <a href="{{ route('registro.edit', $part->id) }}"
+                                        class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a> --}}
+                                    {{-- <form action="{{ route('registro.destroy', $part->id) }}" method="post"
                                         onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
                                         class="d-inline"> @csrf @method('delete') <button type="submit"
                                             class="btn btn-outline-danger btn-sm"><i
-                                                class="fas fa-lg fa-trash"></i></button></form>
+                                                class="fas fa-lg fa-trash"></i></button></form> --}}
                                 </td>
                             </tr>
                         @endforeach

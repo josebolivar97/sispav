@@ -28,6 +28,7 @@ Route::middleware([
 Route::resource('roles', RolesController::class);
 Route::post('participantes/{participante}/registro',[ParticipanteController::class,'participanteRegistro'])->name('participante.registro.store');
 Route::get('participantes/{participante}/regitro-edit',[ParticipanteController::class,'partisanteCreate'])->name('participante.registro.create');
+Route::get('participantes/{participante}/regitro-show',[RegistroController::class,'showparticipante'])->name('participante.registro.show');
 Route::resource('participantes', ParticipanteController::class);
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('comision', ComisionController::class);

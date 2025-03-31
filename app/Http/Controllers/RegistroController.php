@@ -45,7 +45,11 @@ class RegistroController extends Controller
      */
     public function show(Registro $registro)
     {
-        //
+        // $participante= Participante::all();
+        // $registro= Registro::all();
+        // $eventor= Evento::all();
+        // // dd($participante);
+        // return view('registro.show', compact('participante', 'registro', 'eventor'));
     }
 
     /**
@@ -76,5 +80,12 @@ class RegistroController extends Controller
         //
     }
 
+    public function showparticipante(Participante $participante)
+    {
+        $registro= Registro::all();
+        $eventor= Evento::all();
+        // dd($participante);
+        return view('registro.show', compact('participante', 'registro', 'eventor'));
+    }
 
 }
