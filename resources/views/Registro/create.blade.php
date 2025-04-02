@@ -12,12 +12,14 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{ route('participante.registro.store', $participante->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('participante.registro.store', $participante->id) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre de la Institución</label>
-                                <input type="text" class="form-control" name="institucion" value="{{ old('institucion') }}">
+                                <input type="text" class="form-control" name="institucion"
+                                    value="{{ old('institucion') }}">
                                 @error('institucion')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -25,7 +27,8 @@
 
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre de Reconocimiento</label>
-                                <input type="text" class="form-control" name="nom_reconocimiento" value="{{ old('nom_reconocimiento') }}">
+                                <input type="text" class="form-control" name="nom_reconocimiento"
+                                    value="{{ old('nom_reconocimiento') }}">
                                 @error('nom_reconocimiento')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -41,25 +44,28 @@
                                 @error('id_evento')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
-                            </div>
+                            </div> <br>
 
                             <div class="form-group col-md-6 mt-2">
                                 <label for="formFile" class="form-label">Agregar PDF del Certificado</label>
-                                <input type="file" class="form-control-file" name="pdf_reconocimiento">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id="inputGroupFile02" name="pdf_reconocimiento" />
+                                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                </div>                                
                                 @error('pdf_reconocimiento')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="row justify-content-center">
-                            <a href="{{ route('registro.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
-                            <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
-                        </div>
-                    </form>
                 </div>
-            </div>
 
+                <div class="row justify-content-center">
+                    <a href="{{ route('registro.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
+                    <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
+                </div>
+                </form>
+            </div>
         </div>
+    </div>
     </div>
 @stop
