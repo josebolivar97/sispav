@@ -100,6 +100,14 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6 mt-2">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email"
+                                    value="{{ old('email') }}">
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6 mt-2">
                                 <label>Celular</label>
                                 <input type="text" class="form-control" name="celular"
                                     value="{{ old('celular') }}">

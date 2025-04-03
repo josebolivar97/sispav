@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profesion', 50);
             $table->string('l_residencia', 50);
             $table->string('organizacion', 50);
+            $table->string('email', 70);
             $table->string('celular', 50);
             $table->foreignId('id_comision')
                 ->constrained('comisions')

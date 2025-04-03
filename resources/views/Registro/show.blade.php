@@ -15,7 +15,9 @@
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">
                             <font style="vertical-align: inherit;">
-                                <p style="vertical-align: inherit;">{{ $participante->nombres . ' ' . $participante->apellido_paterno . ' ' . $participante->apellido_materno }}</p>
+                                <p style="vertical-align: inherit;">
+                                    {{ $participante->nombres . ' ' . $participante->apellido_paterno . ' ' . $participante->apellido_materno }}
+                                </p>
                             </font>
                         </h3>
                         <ul class="list-group list-group-unbordered mb-3">
@@ -37,18 +39,21 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->comision->nombrecomision }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">
+                                            {{ $participante->comision->nombrecomision }}</p>
                                     </font>
                                 </a>
                             </li>
                             <li class="list-group-item">
                                 <b>
                                     <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Sub Comision</font>
+                                        <font style="vertical-align: inherit;">Tipo Comision</font>
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->tip_comisions->nom_tipcomision }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">
+                                            {{ $participante->comision->tipocomision->nom_tipcomision ?? 'No asignado' }}
+                                        </p>
                                     </font>
                                 </a>
                             </li>
@@ -59,7 +64,7 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->dni }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->organizacion }}</p>
                                     </font>
                                 </a>
                             </li>
@@ -70,7 +75,7 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->dni }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->f_nacimiento }}</p>
                                     </font>
                                 </a>
                             </li>
@@ -81,7 +86,7 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->dni }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->l_nacimiento }}</p>
                                     </font>
                                 </a>
                             </li>
@@ -92,7 +97,7 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->dni }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->profesion }}</p>
                                     </font>
                                 </a>
                             </li>
@@ -103,7 +108,8 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->dni }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->l_residencia }}
+                                        </p>
                                     </font>
                                 </a>
                             </li>
@@ -115,7 +121,7 @@
                                     </font>
                                 </b> <a class="float-right">
                                     <font style="vertical-align: inherit;">
-                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->dni }}</p>
+                                        <p style="margin: 0; vertical-align: inherit;">{{ $participante->email }}</p>
                                     </font>
                                 </a>
                             </li>

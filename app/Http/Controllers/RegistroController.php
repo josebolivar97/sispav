@@ -84,7 +84,7 @@ class RegistroController extends Controller
     {
         $registro= Registro::all();
         $eventor= Evento::all();
-        // dd($participante);
+        //dd($participante);
         return view('registro.show', compact('participante', 'registro', 'eventor'));
     }
 
