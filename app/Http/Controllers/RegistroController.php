@@ -82,8 +82,9 @@ class RegistroController extends Controller
 
     public function showparticipante(Participante $participante)
     {
-        $registro= Registro::all();
         $eventor= Evento::all();
+        $registro = $participante->registros;
+
         //dd($participante);
         return view('registro.show', compact('participante', 'registro', 'eventor'));
     }

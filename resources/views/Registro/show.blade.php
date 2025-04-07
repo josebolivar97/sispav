@@ -153,25 +153,36 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
-                        @foreach ($participante as $part)
+                    <tbody>
+                        @foreach ($registro as $regi)
                             <tr>
-                                <td>{{ $part->nombres }}</td>
-                                <td>{{ $part->profesion }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $regi->institucion }}</td>
+                                <td>{{ $regi->institucion }}</td>
+                                <td>{{ $regi->evento->lugar }}</td>
+                                <td>{{ $regi->evento->fech_aperturra }}</td>
                                 <td width="140px">
-                                    <a href="{{ route('participante.registro.create', $part->id) }}"
-                                        class="btn btn-outline-primary btn-sm"><i class="fas fa-bolt"></i></a>
-                                    <a href="{{ route('registro.edit', $part->id) }}"
-                                        class="btn btn-outline-success btn-sm"><i class="fa fa-file-pdf-o"></i></a>
-                                    <form action="{{ route('registro.destroy', $part->id) }}" method="post"
-                                        onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                        class="d-inline"> @csrf @method('delete') <button type="submit"
-                                            class="btn btn-outline-danger btn-sm"><i
-                                                class="fas fa-lg fa-trash"></i></button></form>
+                                    <a href="{{ asset('storage/' . $regi->pdf_reconocimiento) }}"
+                                        class="btn btn-outline-danger btn-sm" target="_blank">
+                                        <i class="fa fa-file-pdf"></i>
+                                    </a>
+                                </td>
+                                <td width="140px">
+                                    <span class="badge badge-warning">
+                                        <a href="{{ route('registro.edit', $regi->id) }}"
+                                            class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
+                                        <form action="{{ route('registro.destroy', $regi->id) }}" method="post"
+                                            onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
+                                            class="d-inline"> @csrf @method('delete') <button type="submit"
+                                                class="btn btn-outline-danger btn-sm"><i
+                                                    class="fas fa-lg fa-trash"></i></button></form>
+
+
+                                    </span>
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
                 </table>
             </div>
         </div>
