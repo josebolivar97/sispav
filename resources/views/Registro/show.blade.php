@@ -10,7 +10,7 @@
     <a class="btn btn-info mb-3" href="{{ route('registro.create') }}">Registrar Participacion</a>
     <div class="card">
         <div class="card-body">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <form action="">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">
