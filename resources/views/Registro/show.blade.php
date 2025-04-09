@@ -253,23 +253,18 @@
     <script>
         $(document).ready(function() {
             $('#tabla-participantes').DataTable({
+                dom: '<"row mb-3"<"col-md-4"l><"col-md-4"B><"col-md-4"f>>rt<"row mt-3"<"col-md-6"i><"col-md-6"p>>',
+                buttons: [{
+                    extend: 'pdfHtml5',
+                    text: '<i class="fa fa-file-pdf"></i> Reporte PDF',
+                    className: 'btn btn-danger btn-sm'
+                }, ],
                 responsive: true,
                 autoWidth: false,
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json'
                 }
             });
-        });
-    </script>
-@endsection
-@section('js')
-    <script>
-        $('#tabla-participantes').DataTable({
-            dom: 'Bfrtip',
-            buttons: ['copy', 'excel', 'pdf'],
-            language: {
-                url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json'
-            }
         });
     </script>
 @endsection
