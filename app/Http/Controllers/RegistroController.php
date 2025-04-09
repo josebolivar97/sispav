@@ -6,6 +6,7 @@ use App\Http\Requests\StoreRegistroRequest;
 use App\Models\Evento;
 use App\Models\Participante;
 use App\Models\Registro;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class RegistroController extends Controller
@@ -61,7 +62,6 @@ class RegistroController extends Controller
 
         dd($registro);
         return view('registro.create');
-
     }
 
     /**
@@ -82,11 +82,21 @@ class RegistroController extends Controller
 
     public function showparticipante(Participante $participante)
     {
-        $eventor= Evento::all();
+        $eventor = Evento::all();
         $registro = $participante->registros;
 
         //dd($participante);
         return view('registro.show', compact('participante', 'registro', 'eventor'));
     }
 
+    public function exportpdf(Participante $participante)
+    {
+        $eventor = Evento::all(); // si lo usas en la vista
+        $registro = $participante->registros; // relación con registros
+
+        $pdf = Pdf::loadView('registro.reportpdf', compact('participante', 'registro', 'eventor'))
+            ->setPaper('A4', 'portrait');
+
+        return $pdf->stream('participante_' . $participante->dni . '.pdf');
+    }
 }

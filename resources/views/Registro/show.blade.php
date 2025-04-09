@@ -144,13 +144,17 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <a href="{{ route('participante.registro.pdf', $participante->id) }}" class="btn btn-danger mb-3" target="_blank">
+                                <i class="fa fa-file-pdf"></i> Descargar Informe PDF
+                            </a>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-8">
                     <div class="table-responsive">
                         <table id="tabla-participantes" class="table table-bordered table-striped">
-                            <thead>
+                            <thead class="text-center">
                                 <tr>
                                     <th>N°</th>
                                     <th>Evento</th>
@@ -161,7 +165,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 @foreach ($registro as $regi)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -175,8 +179,8 @@
                                                 <i class="fa fa-file-pdf"></i>
                                             </a>
                                         </td>
-                                        <td width="140px">
-                                            <span class="badge badge-warning">
+                                        <td width="">
+                                            <span class="">
                                                 <a href="{{ route('registro.edit', $regi->id) }}"
                                                     class="btn btn-outline-success btn-sm"><i
                                                         class="fas fa-lg fa-edit"></i></a>
@@ -253,12 +257,6 @@
     <script>
         $(document).ready(function() {
             $('#tabla-participantes').DataTable({
-                dom: '<"row mb-3"<"col-md-4"l><"col-md-4"B><"col-md-4"f>>rt<"row mt-3"<"col-md-6"i><"col-md-6"p>>',
-                buttons: [{
-                    extend: 'pdfHtml5',
-                    text: '<i class="fa fa-file-pdf"></i> Reporte PDF',
-                    className: 'btn btn-danger btn-sm'
-                }, ],
                 responsive: true,
                 autoWidth: false,
                 language: {
