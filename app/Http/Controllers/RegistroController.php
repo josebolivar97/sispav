@@ -91,10 +91,10 @@ class RegistroController extends Controller
 
     public function exportpdf(Participante $participante)
     {
-        $eventor = Evento::all(); // si lo usas en la vista
+        // $eventor = Evento::all(); // si lo usas en la vista
         $registro = $participante->registros; // relación con registros
 
-        $pdf = Pdf::loadView('registro.reportpdf', compact('participante', 'registro', 'eventor'))
+        $pdf = Pdf::loadView('registro.reportpdf', compact('participante', 'registro'))
             ->setPaper('A4', 'portrait');
 
         return $pdf->stream('participante_' . $participante->dni . '.pdf');

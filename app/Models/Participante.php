@@ -8,7 +8,7 @@ class Participante extends Model
 {
     //protected $table = 'participantes';
 
-    protected $fillable = ['dni', 'nombres', 'apellido_paterno', 'apellido_materno', 'f_nacimiento', 'l_nacimiento', 'profesion', 'l_residencia', 'organizacion','email', 'celular', 'id_comision'];
+    protected $fillable = ['dni', 'nombres', 'apellido_paterno', 'apellido_materno', 'f_nacimiento', 'departamento', 'provincia', 'distrito', 'profesion', 'l_residencia', 'organizacion', 'email', 'celular', 'id_comision'];
 
     public function Comision()
     {
@@ -19,5 +19,4 @@ class Participante extends Model
     {
         return $this->hasMany(Registro::class, 'id_participante');
     }
-
 }
