@@ -9,13 +9,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 offset-md-3 mt-5">
-            <div class="card">
+            <div class="card card-info card-outline mb-4">
                 <div class="card-body">
                     <form action="{{ route('tipocomision.update', $tipocomision->id) }}" method="post">
                         @csrf
                         @method('put')
                         <div class="form-row">
-                            <div class="form-group col-md-6 mt-2">
+                            <div class="form-group col-md-8 mt-2">
                                 <label>Nombre</label>
                                 <input type="text" class="form-control" name="nom_tipcomision"
                                     value="{{ old('nom_tipcomision', $tipocomision->nom_tipcomision) }}">

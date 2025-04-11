@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 offset-md-3 mt-5">
-            <div class="card">
+            <div class="card card-info card-outline mb-4">
                 <div class="card-body">
                     <form action="{{ route('comision.store') }}" method="post">
                         @csrf

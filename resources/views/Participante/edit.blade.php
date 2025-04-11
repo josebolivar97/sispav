@@ -3,12 +3,13 @@
 @section('title', 'Editar Estudiante')
 
 @section('content_header')
+    <h1 class="text-center font-weight-bold text-uppercase">Editar Datos del Participante</h1>
 @stop
 
 @section('content')
     <div class="row">
         <div class="col-md-6 offset-md-3 mt-5">
-            <div class="card">
+            <div class="card card-info card-outline mb-4">
                 <div class="card-body">
                     <form action="{{ route('participantes.update', $participante->id) }}" method="post">
                         @csrf
@@ -72,10 +73,11 @@
                             <div class="form-group col-md-6 mt-2">
                                 <label>Comision</label>
                                 <select class="form-control" name="id_comision">
-                                    @foreach($comision as $comi)
-                                    <option value="{{ $comi->id }}" {{ $participante->id_comision == $comi->id ? 'selected' : '' }}>
-                                        {{ $comi->nombrecomision }}
-                                    </option>
+                                    @foreach ($comision as $comi)
+                                        <option value="{{ $comi->id }}"
+                                            {{ $participante->id_comision == $comi->id ? 'selected' : '' }}>
+                                            {{ $comi->nombrecomision }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>

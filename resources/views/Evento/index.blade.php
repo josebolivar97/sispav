@@ -11,9 +11,10 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped text-center">
-                    <thead class="thead-dark text-center">
+                <table id="tabla-evento" class="table table-bordered table-striped">
+                    <thead class="text-center">
                         <tr>
+                            <th>N°</th>
                             <th>Nombre de Evento</th>
                             <th>Lugar</th>
                             <th>Fecha de Inicio</th>
@@ -21,9 +22,10 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         @foreach ($evento as $part)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $part->nom_evento }}</td>
                                 <td>{{ $part->lugar }}</td>
                                 <td>{{ $part->fech_aperturra }}</td>
@@ -50,7 +52,19 @@
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
-
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#tabla-evento').DataTable({
+                responsive: true,
+                autoWidth: false,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json'
+                }
+            });
+        });
+    </script>
+@endsection
 @section('js')
     <script>
         console.log("Hi, I'm using the Laravel-AdminLTE package! helooo");

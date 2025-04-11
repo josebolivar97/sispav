@@ -145,7 +145,8 @@
                                 </li>
                             </ul>
 
-                            <a href="{{ route('participante.registro.pdf', $participante->id) }}" class="btn btn-danger mb-3" target="_blank">
+                            <a href="{{ route('participante.registro.pdf', $participante->id) }}"
+                                class="btn btn-danger mb-3" target="_blank">
                                 <i class="fa fa-file-pdf"></i> Descargar Informe PDF
                             </a>
                         </div>
@@ -188,9 +189,8 @@
                                                     onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
                                                     class="d-inline"> @csrf @method('delete') <button type="submit"
                                                         class="btn btn-outline-danger btn-sm"><i
-                                                            class="fas fa-lg fa-trash"></i></button></form>
-
-
+                                                            class="fas fa-lg fa-trash"></i></button>
+                                                </form>
                                             </span>
                                         </td>
                                     </tr>
