@@ -180,7 +180,7 @@
             }
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/dni/${dni}`);
+                const response = await fetch(`https://cultureg.munipuno.gob.pe/api/dni/${dni}`);
                 const data = await response.json();
 
                 console.log('Datos recibidos:', data);

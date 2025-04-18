@@ -33,6 +33,7 @@ class StoreParticipanteRequest extends FormRequest
             'profesion' => 'required|max:50',
             'l_residencia' => 'required|max:50',
             'organizacion' => 'required|max:50',
+            'email' => 'required|max:100',
             'celular' => 'required|max:50',
             'id_comision' => 'required|max:50',
         ];

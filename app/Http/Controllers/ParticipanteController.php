@@ -8,6 +8,7 @@ use App\Models\Comision;
 use App\Models\Evento;
 use App\Models\Participante;
 use App\Models\Registro;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -31,7 +32,19 @@ class ParticipanteController extends Controller
 
     public function store(StoreParticipanteRequest $request)
     {
-        Participante::create($request->all());
+        // Crear usuario
+        $usuario = User::create([
+            'name' => $request->nombres . ' ' . $request->apellido_paterno . ' ' . $request->apellido_materno,
+            'email' => $request->email,
+            'password' => bcrypt($request->dni),
+        ]);
+
+        // Agregar el ID del usuario al array del request
+        $data = $request->all();
+        $data['id_user'] = $usuario->id;
+
+        // Crear participante
+        Participante::create($data);
 
         return redirect()->route('participantes.index')->with('success', 'Usuario creado correctamente.');
     }
@@ -45,7 +58,7 @@ class ParticipanteController extends Controller
     public function edit(Participante $participante)
     {
         $comision = Comision::all();
-        return view('participante.edit', compact('participante','comision'));
+        return view('participante.edit', compact('participante', 'comision'));
     }
 
     public function update(Request $request, Participante $participante)
@@ -73,22 +86,22 @@ class ParticipanteController extends Controller
     {
 
         // Obtener todos los datos del request
-    $data = $request->all();
+        $data = $request->all();
 
-    // Asignar el id del participante
-    $data['id_participante'] = $participante->id;
+        // Asignar el id del participante
+        $data['id_participante'] = $participante->id;
 
-    // Subir el archivo PDF si existe
-    if ($request->hasFile('pdf_reconocimiento')) {
-        // Guardar en la carpeta 'public/pdfs' y obtener el nombre del archivo
-        $path = $request->file('pdf_reconocimiento')->store('pdfs', 'public');
-        $data['pdf_reconocimiento'] = $path; // Guardamos la ruta en la BD
-    }
+        // Subir el archivo PDF si existe
+        if ($request->hasFile('pdf_reconocimiento')) {
+            // Guardar en la carpeta 'public/pdfs' y obtener el nombre del archivo
+            $path = $request->file('pdf_reconocimiento')->store('pdfs', 'public');
+            $data['pdf_reconocimiento'] = $path; // Guardamos la ruta en la BD
+        }
 
-    // dd($request->all(), $request->file('pdf_reconocimiento'), $request->validated());
-    // Crear el registro con los datos modificados
-    Registro::create($data);
+        // dd($request->all(), $request->file('pdf_reconocimiento'), $request->validated());
+        // Crear el registro con los datos modificados
+        Registro::create($data);
 
-    return redirect()->route('registro.index')->with('success', 'Registro creado correctamente.');
+        return redirect()->route('registro.index')->with('success', 'Registro creado correctamente.');
     }
 }

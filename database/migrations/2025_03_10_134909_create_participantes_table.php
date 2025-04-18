@@ -30,6 +30,7 @@ return new class extends Migration
                 ->constrained('comisions')
                 ->restrictOnDelete()
                 ->restrictOnUpdate();
+            $table->foreignId('id_user')->constrained('users');
             $table->timestamps();
         });
     }

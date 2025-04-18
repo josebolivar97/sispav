@@ -66,4 +66,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function participante()
+    {
+        return $this->hasOne(Participante::class, 'id_user');
+    }
 }
+
