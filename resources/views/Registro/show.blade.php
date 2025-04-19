@@ -3,7 +3,7 @@
 @section('title', 'Participantes')
 
 @section('content_header')
-    <h1 class="text-center font-weight-bold text-uppercase">Participaciones de </h1>
+    <h1 class="text-center font-weight-bold text-uppercase">Registro de Participaciones</h1>
 @stop
 
 @section('content')
@@ -91,7 +91,8 @@
                                         </font>
                                     </b> <a class="float-right">
                                         <font style="vertical-align: inherit;">
-                                            <p style="margin: 0; vertical-align: inherit;">{{ $participante->l_nacimiento }}
+                                            <p style="margin: 0; vertical-align: inherit;">
+                                                {{ $participante->departamento }} / {{ $participante->provincia }} / {{ $participante->distrito }}
                                             </p>
                                         </font>
                                     </a>

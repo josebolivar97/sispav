@@ -73,9 +73,10 @@
                         style="width: 110px; height: 120px; margin-left: -20px;">
                 </td>
                 <td style="text-align: center; vertical-align: middle; border: none;">
-                    <div style="font-weight: bold; font-size: 14pt; text-transform: uppercase;" class="titulo">
+                    <div style="font-weight: bold; font-size: 16pt; text-transform: uppercase; text-decoration: underline" class="titulo">
                         MUNICIPALIDAD PROVINCIAL DE PUNO</div><br>
-                    <div style="font-size: 14px" class="subtitulo">Consejo Provincial de Cultura</div>
+                    <div style="font-size: 15px text-transform: uppercase font-weight: bold text-decoration: underline">Sub Gerencia De Promoción, Educación, Cultura Y Deporte</div> <br>
+                    <div style="font-size: 14px text-transform: uppercase font-weight: bold text-decoration: underline">Consejo Provincial de Cultura</div>
                 </td>
                 <td width="100" style="text-align: right; vertical-align: middle; border: none;">
                     <img src="{{ public_path('img/logomuseo2.jpg') }}"
@@ -83,14 +84,22 @@
                 </td>
             </tr>
         </table>
+        <br>
     </div>
-    <div style="font-size: 14px" class="subtitulo">Ficha de Actividades del Voluntario</div>
+    <div style="font-size: 14px; text-align: center; font-weight: bold; text-decoration: underline;">
+        Ficha Personal
+    </div>
     <div class="section-title">Datos Personales</div>
     <table style="width: 100%; border-collapse: collapse; border: none; border-collapse: collapse; border="0";
         cellspacing="0"; cellpadding="0"">
         <tr>
             <td style="width: 30%; font-weight: bold; vertical-align: top; padding: 2px; border: none;">Código</td>
             <td style="width: 70%; padding: 2px; border: none;">{{ $participante->dni }}</td>
+        </tr>
+        <tr>
+            <td style="border: none; font-weight: bold; vertical-align: top; padding: 2px;">Nombres y Apellidos</td>
+            <td style="border: none; padding: 2px;">{{ $participante->nombres }} {{ $participante->apellido_paterno }}
+                {{ $participante->apellido_materno }}</td>
         </tr>
         <tr>
             <td style="border: none; font-weight: bold; vertical-align: top; padding: 2px;">Comisión</td>
@@ -106,17 +115,14 @@
             <td style="border: none; padding: 2px;">{{ $participante->organizacion }}</td>
         </tr>
         <tr>
-            <td style="border: none; font-weight: bold; vertical-align: top; padding: 2px;">Nombres y Apellidos</td>
-            <td style="border: none; padding: 2px;">{{ $participante->nombres }} {{ $participante->apellido_paterno }}
-                {{ $participante->apellido_materno }}</td>
-        </tr>
-        <tr>
             <td style="border: none; font-weight: bold; vertical-align: top; padding: 2px;">Fecha nacimiento</td>
             <td style="border: none; padding: 2px;">{{ $participante->f_nacimiento }}</td>
         </tr>
         <tr>
             <td style="border: none; font-weight: bold; vertical-align: top; padding: 2px;">Lugar de nacimiento</td>
-            <td style="border: none; padding: 2px;">{{ $participante->l_nacimiento }}</td>
+            <td style="border: none; padding: 2px;"><p style="margin: 0; vertical-align: inherit;">
+                {{ $participante->departamento }} / {{ $participante->provincia }} / {{ $participante->distrito }}
+            </p> </td>
         </tr>
         <tr>
             <td style="border: none; font-weight: bold; vertical-align: top; padding: 2px;">Teléfono</td>

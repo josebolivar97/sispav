@@ -15,7 +15,7 @@ class UsuarioController extends Controller
     {
         $usuario = User::all();
 
-        return view('Usuario.index', compact('usuario'));
+        return view('usuario.index', compact('usuario'));
     }
 
     /**
@@ -24,7 +24,7 @@ class UsuarioController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('Usuario.create', compact('roles') );
+        return view('usuario.create', compact('roles') );
     }
 
     /**
@@ -66,7 +66,7 @@ class UsuarioController extends Controller
         $roles = Role::all();
         $rolito = $usuario->getRoleNames();
         // dd($rolito);
-        return view('Usuario.edit', compact('usuario', 'roles','rolito'));
+        return view('usuario.edit', compact('usuario', 'roles','rolito'));
     }
 
     /**

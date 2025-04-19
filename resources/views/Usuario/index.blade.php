@@ -11,8 +11,8 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped text-center">
-                    <thead class="thead-dark text-center">
+                <table id="tabla-usuariosindex" class="table table-bordered table-striped">
+                    <thead class="text-center">
                         <tr>
                             <th>Nombre</th>
                             <th>Email</th>
@@ -46,6 +46,20 @@
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#tabla-usuariosindex').DataTable({
+                responsive: true,
+                autoWidth: false,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json'
+                }
+            });
+        });
+    </script>
+@endsection
 
 @section('js')
     <script>

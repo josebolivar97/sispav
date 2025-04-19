@@ -11,28 +11,50 @@ use App\Models\Participante;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/auth/login');
 });
+
+// Route::get('/clear', function() {
+
+//    Artisan::call('cache:clear');
+//    Artisan::call('config:clear');
+//    Artisan::call('config:cache');
+//    Artisan::call('view:clear');
+
+//    return "Cleared!";
+
+// });
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+
+    // Redirigir dashboard a registro.index
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect()->route('registro.index');
     })->name('dashboard');
+
+    // Rutas organizadas dentro del middleware (mismo orden que tenías)
+    Route::resource('roles', RolesController::class);
+
+    Route::post('participantes/{participante}/registro', [ParticipanteController::class, 'participanteRegistro'])
+        ->name('participante.registro.store');
+
+    Route::get('participantes/{participante}/regitro-edit', [ParticipanteController::class, 'partisanteCreate'])
+        ->name('participante.registro.create');
+
+    Route::get('participantes/{participante}/regitro-show', [RegistroController::class, 'showparticipante'])
+        ->name('participante.registro.show');
+
+    Route::get('participantes/{participante}/regitro-pdf', [RegistroController::class, 'exportpdf'])
+        ->name('participante.registro.pdf');
+
+    Route::resource('participantes', ParticipanteController::class);
+    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('comision', ComisionController::class);
+    Route::resource('tipocomision', TipComisionController::class);
+    Route::resource('evento', EventoController::class);
+    Route::resource('registro', RegistroController::class);
 });
-
-
-Route::resource('roles', RolesController::class);
-Route::post('participantes/{participante}/registro',[ParticipanteController::class,'participanteRegistro'])->name('participante.registro.store');
-Route::get('participantes/{participante}/regitro-edit',[ParticipanteController::class,'partisanteCreate'])->name('participante.registro.create');
-Route::get('participantes/{participante}/regitro-show',[RegistroController::class,'showparticipante'])->name('participante.registro.show');
-Route::get('participantes/{participante}/regitro-pdf',[RegistroController::class,'exportpdf'])->name('participante.registro.pdf');
-Route::resource('participantes', ParticipanteController::class);
-Route::resource('usuarios', UsuarioController::class);
-Route::resource('comision', ComisionController::class);
-Route::resource('tipocomision', TipComisionController::class);
-Route::resource('evento', EventoController::class);
-Route::resource('registro', RegistroController::class);

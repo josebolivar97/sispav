@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'CULTUREG',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>RECON</b>MPP',
+    'logo_img' => 'vendor/adminlte/dist/img/colocareste.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -86,11 +86,11 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/colocareste.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 50,
-            'height' => 50,
+            'width' => 100,
+            'height' => 100,
         ],
     ],
 
@@ -325,16 +325,18 @@ return [
             'text' => 'Usuarios',
             'route' => 'usuarios.index',
             'icon' => 'fas fa-users fa-user',
+            'can' => 'usuarios.index',
         ],
         [
             'text' => 'Roles',
             'route' => 'roles.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user-shield',
+            'can' => 'roles.index',
         ],
         [
             'text' => 'Registro',
             'route' => 'registro.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-book',
         ],
         [
             'text' => 'Participantes',
@@ -344,17 +346,17 @@ return [
         [
             'text' => 'Evento',
             'route' => 'evento.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-calendar-alt',
         ],
         [
             'text' => 'Comisión',
             'route' => 'comision.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-puzzle-piece',
         ],
         [
             'text' => 'Tipo de Comisión',
             'route' => 'tipocomision.index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '	fas fa-boxes',
         ],
 
     ],

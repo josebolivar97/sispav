@@ -21,7 +21,7 @@
                             <th>Celular</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         @foreach ($participante as $part)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -29,14 +29,14 @@
                                 <td>{{ $part->nombres }} {{ $part->apellido_paterno }} {{ $part->apellido_materno }}</td>
                                 <td>{{ $part->comision->nombrecomision }}</td>
                                 <td width="140px">
-                                    {{-- <a href="{{ route('usuarios.show', $part->id) }}"
-                                            class="btn btn-outline-success btn-sm"><i class="fas fa-clipboard"></i></a> --}}
                                     <a href="{{ route('participantes.edit', $part->id) }}"
                                         class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                                    <form action="{{ route('participantes.destroy', $part->id) }}" method="post"
-                                        class="d-inline"> @csrf @method('delete') <button type="submit"
-                                            class="btn btn-outline-danger btn-sm"><i
-                                                class="fas fa-lg fa-trash"></i></button></form>
+                                    @can('participantes.edit')
+                                        <form action="{{ route('participantes.destroy', $part->id) }}" method="post"
+                                            class="d-inline"> @csrf @method('delete') <button type="submit"
+                                                class="btn btn-outline-danger btn-sm"><i
+                                                    class="fas fa-lg fa-trash"></i></button></form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

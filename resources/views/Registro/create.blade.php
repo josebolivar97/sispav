@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="form-group col-md-6 mt-2">
-                                <label>Nombre de Reconocimientos</label>
+                                <label>Nombre de Reconocimiento</label>
                                 <input type="text" class="form-control" name="nom_reconocimiento"
                                     value="{{ old('nom_reconocimiento') }}">
                                 @error('nom_reconocimiento')
@@ -51,7 +51,7 @@
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="inputGroupFile02" name="pdf_reconocimiento" />
                                     <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                                </div>
+                                </div>                                
                                 @error('pdf_reconocimiento')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
-    <a class="btn btn-info mb-3" href="{{ route('tipocomision.create') }}">Registrar Tipo de Comisión</a>
+    @can('tipocomision.create')
+        <a class="btn btn-info mb-3" href="{{ route('tipocomision.create') }}">Registrar Tipo de Comisión</a>
+    @endcan
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -25,13 +28,18 @@
                                 <td width="140px">{{ $loop->iteration }}</td>
                                 <td>{{ $part->nom_tipcomision }}</td>
                                 <td width="140px">
-                                    <a href="{{ route('tipocomision.edit', $part->id) }}"
-                                        class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                                    <form action="{{ route('tipocomision.destroy', $part->id) }}" method="post"
-                                        onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                        class="d-inline"> @csrf @method('delete') <button type="submit"
-                                            class="btn btn-outline-danger btn-sm"><i
-                                                class="fas fa-lg fa-trash"></i></button></form>
+                                    @can('tipocomision.edit')
+                                        <a href="{{ route('tipocomision.edit', $part->id) }}"
+                                            class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
+                                    @endcan
+                                    @can('tipocomision.destroy')
+                                        <form action="{{ route('tipocomision.destroy', $part->id) }}" method="post"
+                                            onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
+                                            class="d-inline"> @csrf @method('delete') <button type="submit"
+                                                class="btn btn-outline-danger btn-sm"><i
+                                                    class="fas fa-lg fa-trash"></i></button></form>
+                                    @endcan
+
                                 </td>
                             </tr>
                         @endforeach

@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
-    <a class="btn btn-info mb-3" href="{{ route('comision.create') }}">Registro de Comisión</a>
+    @can('tipocomision.create')
+        <a class="btn btn-info mb-3" href="{{ route('comision.create') }}">Registro de Comisión</a>
+    @endcan
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -25,15 +28,20 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $part->nombrecomision }}</td>
-                                <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo'}}</td>
+                                <td>{{ $part->tipocomision->nom_tipcomision ?? 'Sin tipo' }}</td>
                                 <td width="140px">
-                                    <a href="{{ route('comision.edit', $part->id) }}"
-                                        class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                                    <form action="{{ route('comision.destroy', $part->id) }}" method="post"
-                                        onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                        class="d-inline"> @csrf @method('delete') <button type="submit"
-                                            class="btn btn-outline-danger btn-sm"><i
-                                                class="fas fa-lg fa-trash"></i></button></form>
+                                    @can('comision.edit')
+                                        <a href="{{ route('comision.edit', $part->id) }}"
+                                            class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
+                                    @endcan
+                                    @can('tipocomision.destroy')
+                                        <form action="{{ route('comision.destroy', $part->id) }}" method="post"
+                                            onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
+                                            class="d-inline"> @csrf @method('delete') <button type="submit"
+                                                class="btn btn-outline-danger btn-sm"><i
+                                                    class="fas fa-lg fa-trash"></i></button></form>
+                                    @endcan
+
                                 </td>
                             </tr>
                         @endforeach
