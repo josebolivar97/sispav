@@ -1,49 +1,62 @@
-@extends('adminlte::auth.login')
-{{-- <x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('adminlte::auth.auth-page', ['auth_type' => 'login'])
 
-        <x-validation-errors class="mb-4" />
+@section('title', 'Iniciar Sesión')
 
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ $value }}
+@section('auth_header', 'Bienvenido al Sistema de Participación Cultural')
+
+@section('auth_body')
+    <form action="{{ route('login') }}" method="post">
+        @csrf
+
+        {{-- Correo electrónico --}}
+        <x-adminlte-input
+            name="email"
+            type="email"
+            label="Correo electrónico"
+            placeholder="ejemplo@correo.com"
+            label-class="text-lightblue"
+            value="{{ old('email') }}"
+            required
+            autofocus
+        />
+
+        {{-- Contraseña --}}
+        <x-adminlte-input
+            name="password"
+            type="password"
+            label="Contraseña"
+            placeholder="Ingrese su contraseña"
+            label-class="text-lightblue"
+            required
+        />
+
+        {{-- Recuérdame --}}
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label class="custom-control-label" for="remember">Recuérdame</label>
             </div>
-        @endsession
+        </div>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        {{-- Botón Iniciar Sesión --}}
+        <x-adminlte-button
+            class="btn-block"
+            type="submit"
+            theme="primary"
+            icon="fas fa-sign-in-alt"
+            label="Iniciar Sesión"
+        />
+    </form>
+@endsection
 
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout> --}}
+@push('js')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.auth-logo a');
+        if (logo) {
+            logo.href = 'javascript:void(0)'; // Desactiva el enlace
+            logo.onclick = () => false; // Evita cualquier acción
+        }
+    });
+</script>
+@endpush

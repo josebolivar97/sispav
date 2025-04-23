@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>RECON</b>MPP',
-    'logo_img' => 'vendor/adminlte/dist/img/colocareste.png',
+    'logo' => '<b>CULTUREG</b>MPP',
+    'logo_img' => 'vendor/adminlte/dist/img/LOGO.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'CULTUREG',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,13 +84,13 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/colocareste.png',
+            'path' => 'vendor/adminlte/dist/img/LOGO.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 100,
-            'height' => 100,
+            'width' => 150,
+            'height' => 150,
         ],
     ],
 
@@ -113,7 +113,7 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/LOGO.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -174,7 +174,7 @@ return [
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
-    'classes_auth_footer' => '',
+    'classes_auth_footer' => 'd-none',
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
 
@@ -256,8 +256,8 @@ return [
     |
     */
 
-    'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'use_route_url' => true,
+    'dashboard_url' => 'registro.index',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -311,10 +311,10 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Busqueda',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'Busqueda',
+        // ],
         [
             'text' => 'blog',
             'url' => 'admin/blog',

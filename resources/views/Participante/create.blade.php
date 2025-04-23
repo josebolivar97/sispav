@@ -17,31 +17,27 @@
                             <div class="text-center border-bottom pb-2 mb-3">
                                 <h3 class="text-uppercase">Datos Personales</h3>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4 mt-2">
-                                    <label for="tipo_documento">Tipo de Documento</label>
-                                    <select id="tipo_documento" class="form-control" name="tipo_documento">
-                                        <option value="DNI" selected>DNI</option>
-                                        <option value="CE">Carnet de extranjería</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4 mt-2">
+                            <div class="form-row align-items-end">
+                            
+                                <div class="form-group col-md-4">
                                     <label>DNI</label>
-                                    <input type="text"class="form-control" name="dni" value="{{ old('dni') }}">
+                                    <input type="text" class="form-control" name="dni" value="{{ old('dni') }}">
                                     @error('dni')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-4 mt-2">
-                                    <label>BUSCAR
-                                        <a class="btn btn-primary" onclick="buscar()">Primary</a>
-                                    </label>
-                                    {{-- <form action="" method="post">
-                                    </form> --}}
+                                <div class="form-group col-md-2">
+                                    <label>&nbsp;</label>
+                                    <button type="button" class="btn btn-primary btn-block" onclick="buscar()">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                 </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group col-md-4 mt-2">
                                     <label>Nombres</label>
-                                    <input type="text" class="form-control" name="nombres" value="{{ old('nombres') }}">
+                                    <input type="text" class="form-control" name="nombres"
+                                        value="{{ old('nombres') }}"readonly>
 
                                     @error('nombres')
                                         <small class="text-danger">{{ $message }}</small>
@@ -51,7 +47,7 @@
                                 <div class="form-group col-md-4 mt-2">
                                     <label>Apellido Paterno</label>
                                     <input type="text" class="form-control" name="apellido_paterno"
-                                        value="{{ old('apellido_paterno') }}">
+                                        value="{{ old('apellido_paterno') }}"readonly>
 
                                     @error('apellido_paterno')
                                         <small class="text-danger">{{ $message }}</small>
@@ -61,7 +57,7 @@
                                 <div class="form-group col-md-4 mt-2">
                                     <label>Apellido Materno</label>
                                     <input type="text" class="form-control" name="apellido_materno"
-                                        value="{{ old('apellido_materno') }}">
+                                        value="{{ old('apellido_materno') }}"readonly>
 
                                     @error('apellido_materno')
                                         <small class="text-danger">{{ $message }}</small>
@@ -174,7 +170,7 @@
         async function buscar() {
             const dni = document.querySelector('input[name="dni"]').value;
 
-            if(!dni || dni.length !== 8) {
+            if (!dni || dni.length !== 8) {
                 alert('Por favor ingrese un DNI válido de 8 dígitos');
                 return;
             }
@@ -186,7 +182,7 @@
                 console.log('Datos recibidos:', data);
 
                 // Autocompletar campos si la API devuelve datos
-                if(data) {
+                if (data) {
 
                     document.querySelector('input[name="nombres"]').value = data.nombres || '';
                     document.querySelector('input[name="apellido_paterno"]').value = data.apellidoPaterno || '';
@@ -213,10 +209,9 @@
         //     .then((result) => console.log(result))
         //     .catch((error) => console.error(error));
         // }
-        function xd(e){
+        function xd(e) {
             const dni = e.target.value;
             console.log('DNI ingresado:', dni);
         }
-
     </script>
 @endsection
