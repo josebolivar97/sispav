@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TipComisionController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\YearController;
 use App\Models\Participante;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::get('/', function () {
 // });
 
 Route::middleware([
-    'auth:sanctum',
+    'auth',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {

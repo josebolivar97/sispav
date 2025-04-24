@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lugar', 50);
             $table->date('fech_aperturra');
             $table->date('fech_cierre');
+            $table->string('anio',4);
             $table->timestamps();
         });
     }

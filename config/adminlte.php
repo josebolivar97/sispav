@@ -311,10 +311,7 @@ return [
         ],
 
         // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'Busqueda',
-        // ],
+
         [
             'text' => 'blog',
             'url' => 'admin/blog',

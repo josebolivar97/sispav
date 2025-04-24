@@ -17,14 +17,16 @@
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="name" value="{{ old('name', $usuario->name) }}">
+                                <input type="text" class="form-control" name="name"
+                                    value="{{ old('name', $usuario->name) }}">
                                 @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6 mt-2">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email', $usuario->email) }}">
+                                <input type="text" class="form-control" name="email"
+                                    value="{{ old('email', $usuario->email) }}">
 
                                 @error('email')
                                     <small class="text-danger">{{ $message }}</small>
@@ -33,11 +35,12 @@
                             </div>
                             <div class="form-group col-md-6 mt-2">
                                 <label for="inputState">Rol</label>
-                                {{-- <p>{{$rolito[0]}}</p>
-                                <p>{{$roles[4]->name == $rolito}}</p> --}}
+
                                 <select class="form-control" name="rol">
-                                    @foreach($roles as $rol)
-                                        <option value="{{ $rol->name }}" {{ $rolito[0] == $rol->name ? 'selected' : '' }}>
+                                    <option value="" {{ empty($rolito[0]) ? 'selected' : '' }}>Ninguno</option>
+                                    @foreach ($roles as $rol)
+                                        <option value="{{ $rol->name }}"
+                                            {{ isset($rolito[0]) && $rolito[0] == $rol->name ? 'selected' : '' }}>
                                             {{ $rol->name }}
                                         </option>
                                     @endforeach

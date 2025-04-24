@@ -39,6 +39,10 @@ class ParticipanteController extends Controller
             'password' => bcrypt($request->dni),
         ]);
 
+
+
+        $usuario->assignRole(2);
+
         // Agregar el ID del usuario al array del request
         $data = $request->all();
         $data['id_user'] = $usuario->id;
@@ -58,7 +62,7 @@ class ParticipanteController extends Controller
     public function edit(Participante $participante)
     {
         $comision = Comision::all();
-        return view('participante.edit', compact('participante', 'comision'));
+        return view('participantes.edit', compact('participante', 'comision'));
     }
 
     public function update(Request $request, Participante $participante)

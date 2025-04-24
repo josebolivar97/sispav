@@ -17,6 +17,7 @@ class User extends Authenticatable
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
+    use HasApiTokens;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -27,6 +28,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guard_name = 'web';
+
     protected $fillable = [
         'name',
         'email',

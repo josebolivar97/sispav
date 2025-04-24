@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -9,55 +10,74 @@ use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $role1 = Role::create(['name' => 'Administrador']);
-        $role2 = Role::create(['name' => 'Usuario']);
+        // Crear roles
+        $admin = Role::create(['name' => 'Administrador']);
+        $usuario = Role::create(['name' => 'Usuario']);
 
-        /*Usuarios*/
-        Permission::create(['name'=>'usuarios.index']);
-        Permission::create(['name'=>'usuarios.create']);
-        Permission::create(['name'=>'usuarios.edit']);
-        Permission::create(['name'=>'usuarios.destroy']);
+        // Lista de permisos
+        $permisos = [
+            // Usuarios
+            'usuarios.index',
+            'usuarios.create',
+            'usuarios.edit',
+            'usuarios.destroy',
 
-        /*Roles*/
-        Permission::create(['name'=>'roles.index']);
-        Permission::create(['name'=>'roles.create']);
-        Permission::create(['name'=>'roles.edit']);
-        Permission::create(['name'=>'roles.destroy']);
+            // Roles
+            'roles.index',
+            'roles.create',
+            'roles.edit',
+            'roles.destroy',
 
-        /*Participantes*/
-        Permission::create(['name'=>'participantes.index']);
-        Permission::create(['name'=>'participantes.create']);
-        Permission::create(['name'=>'participantes.edit']);
-        Permission::create(['name'=>'participantes.destroy']);
+            // Participantes
+            'participantes.index',
+            'participantes.create',
+            'participantes.edit',
+            'participantes.destroy',
 
-        /*Comision*/
-        Permission::create(['name'=>'comision.index']);
-        Permission::create(['name'=>'comision.create']);
-        Permission::create(['name'=>'comision.edit']);
-        Permission::create(['name'=>'comision.destroy']);
+            // Comisiones
+            'comision.index',
+            'comision.create',
+            'comision.edit',
+            'comision.destroy',
 
-        /*Tipo de Comision*/
-        Permission::create(['name'=>'tipocomision.index']);
-        Permission::create(['name'=>'tipocomision.create']);
-        Permission::create(['name'=>'tipocomision.edit']);
-        Permission::create(['name'=>'tipocomision.destroy']);
+            // Tipo de Comision
+            'tipocomision.index',
+            'tipocomision.create',
+            'tipocomision.edit',
+            'tipocomision.destroy',
 
-        /*Evento*/
-        Permission::create(['name'=>'evento.index']);
-        Permission::create(['name'=>'evento.create']);
-        Permission::create(['name'=>'evento.edit']);
-        Permission::create(['name'=>'evento.destroy']);
+            // Eventos
+            'evento.index',
+            'evento.create',
+            'evento.edit',
+            'evento.destroy',
 
-        /*Registro*/
-        Permission::create(['name'=>'registro.index']);
-        Permission::create(['name'=>'registro.create']);
-        Permission::create(['name'=>'registro.edit']);
-        Permission::create(['name'=>'registro.destroy']);
+            // Registros
+            'registro.index',
+            'registro.create',
+            'registro.edit',
+            'registro.destroy',
 
+            // Año
+            'year.index',
+            'year.create',
+            'year.edit',
+            'year.destroy',
+        ];
+
+        // Crear permisos en base de datos
+        foreach ($permisos as $permiso) {
+            Permission::firstOrCreate(['name' => $permiso]);
+        }
+
+        // Asignar todos los permisos al rol Administrador
+        $admin->syncPermissions(Permission::all());
+
+        // Asignar todos menos los destroy al rol Usuario
+        $usuario->syncPermissions(
+            Permission::where('name', 'not like', '%.destroy')->get()
+        );
     }
 }
