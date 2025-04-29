@@ -256,8 +256,8 @@ return [
     |
     */
 
-    'use_route_url' => true,
-    'dashboard_url' => 'registro.index',
+    'use_route_url' => false,
+    'dashboard_url' => '',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -312,11 +312,11 @@ return [
 
         // Sidebar items:
 
-        [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
+        // [
+        //     'text' => 'blog',
+        //     'url' => 'admin/blog',
+        //     'can' => 'manage-blog',
+        // ],
         // ['header' => 'account_settings'],
         [
             'text' => 'Usuarios',
@@ -334,28 +334,38 @@ return [
             'text' => 'Registro',
             'route' => 'registro.index',
             'icon' => 'fas fa-book',
+            'can' => 'registro.index',
         ],
         [
             'text' => 'Participantes',
             'route' => 'participantes.index',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'usuarios.index',
         ],
         [
             'text' => 'Evento',
             'route' => 'evento.index',
             'icon' => 'fas fa-calendar-alt',
+            'can' => 'evento.index',
         ],
         [
             'text' => 'Comisión',
             'route' => 'comision.index',
             'icon' => 'fas fa-puzzle-piece',
+            'can' => 'comision.index',
         ],
         [
             'text' => 'Tipo de Comisión',
             'route' => 'tipocomision.index',
             'icon' => '	fas fa-boxes',
+            'can' => 'tipocomision.index',
         ],
-
+        [
+            'text' => 'Mis Datos',
+            'route' => 'panel',
+            'icon' => '	fas fa-street-view',
+            'can' => 'panel.index',
+        ],
     ],
 
     /*

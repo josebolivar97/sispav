@@ -15,6 +15,7 @@ class RoleSeeder extends Seeder
         // Crear roles
         $admin = Role::create(['name' => 'Administrador']);
         $usuario = Role::create(['name' => 'Usuario']);
+        $voluntario = Role::create(['name' => 'Participante']);
 
         // Lista de permisos
         $permisos = [
@@ -60,11 +61,8 @@ class RoleSeeder extends Seeder
             'registro.edit',
             'registro.destroy',
 
-            // Año
-            'year.index',
-            'year.create',
-            'year.edit',
-            'year.destroy',
+            // Panel
+            'panel.index',
         ];
 
         // Crear permisos en base de datos
@@ -79,5 +77,7 @@ class RoleSeeder extends Seeder
         $usuario->syncPermissions(
             Permission::where('name', 'not like', '%.destroy')->get()
         );
+
+        $voluntario->givePermissionTo('panel.index');
     }
 }

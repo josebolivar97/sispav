@@ -6,10 +6,12 @@ use App\Http\Controllers\ParticipanteController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TipComisionController;
+use App\Http\Controllers\VistasController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\YearController;
 use App\Models\Participante;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Middleware\RoleMiddleware;
 
 Route::get('/', function () {
     return view('/auth/login');
@@ -34,7 +36,7 @@ Route::middleware([
 
     // Redirigir dashboard a registro.index
     Route::get('/dashboard', function () {
-        return redirect()->route('registro.index');
+        return redirect()->route('panel');
     })->name('dashboard');
 
     // Rutas organizadas dentro del middleware (mismo orden que tenías)
@@ -53,9 +55,16 @@ Route::middleware([
         ->name('participante.registro.pdf');
 
     Route::resource('participantes', ParticipanteController::class);
-    Route::resource('usuarios', UsuarioController::class);
     Route::resource('comision', ComisionController::class);
     Route::resource('tipocomision', TipComisionController::class);
     Route::resource('evento', EventoController::class);
     Route::resource('registro', RegistroController::class);
+    Route::get('/panel', [VistasController::class, 'index'])->middleware('auth')->name('panel');
+
+});
+
+
+Route::group(['middleware' => [RoleMiddleware::using(['Administrador', 'Participante'])]], function () {
+    Route::resource('usuarios', UsuarioController::class);
+
 });
