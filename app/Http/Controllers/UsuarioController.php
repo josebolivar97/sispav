@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 
 class UsuarioController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      */

@@ -25,7 +25,7 @@
                                     @error('dni')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                </div>
+                                </div><label for=""></label>
                                 <div class="form-group col-md-2">
                                     <label>&nbsp;</label>
                                     <button type="button" class="btn btn-primary btn-block" onclick="buscar()">

@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class ComisionController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('can:usuarios.index')->only(['index']);
+    // }
     /**
      * Display a listing of the resource.
      */

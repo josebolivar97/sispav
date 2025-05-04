@@ -34,37 +34,45 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
-    // Redirigir dashboard a registro.index
     Route::get('/dashboard', function () {
         return redirect()->route('panel');
     })->name('dashboard');
 
-    // Rutas organizadas dentro del middleware (mismo orden que tenías)
-    Route::resource('roles', RolesController::class);
+    Route::get('/panel', [VistasController::class, 'index'])->name('panel');
 
-    Route::post('participantes/{participante}/registro', [ParticipanteController::class, 'participanteRegistro'])
-        ->name('participante.registro.store');
+    // 🔒 Solo Administrador puede acceder a todo
+    Route::middleware('role:Administrador')->group(function () {
+        Route::resource('roles', RolesController::class);
+        Route::resource('usuarios', UsuarioController::class);
+    });
 
-    Route::get('participantes/{participante}/regitro-edit', [ParticipanteController::class, 'partisanteCreate'])
-        ->name('participante.registro.create');
+    // 🔒 Administrador y Usuario (excepto destroy)
+    Route::middleware('role:Administrador|Usuario')->group(function () {
+        Route::resource('participantes', ParticipanteController::class)->except(['destroy']);
+        Route::resource('comision', ComisionController::class);
+        Route::resource('tipocomision', TipComisionController::class);
+        Route::resource('evento', EventoController::class);
+        Route::resource('registro', RegistroController::class);
 
-    Route::get('participantes/{participante}/regitro-show', [RegistroController::class, 'showparticipante'])
-        ->name('participante.registro.show');
+        Route::post('participantes/{participante}/registro', [ParticipanteController::class, 'participanteRegistro'])
+            ->name('participante.registro.store');
 
-    Route::get('participantes/{participante}/regitro-pdf', [RegistroController::class, 'exportpdf'])
-        ->name('participante.registro.pdf');
+        Route::get('participantes/{participante}/regitro-edit', [ParticipanteController::class, 'partisanteCreate'])
+            ->name('participante.registro.create');
 
-    Route::resource('participantes', ParticipanteController::class);
-    Route::resource('comision', ComisionController::class);
-    Route::resource('tipocomision', TipComisionController::class);
-    Route::resource('evento', EventoController::class);
-    Route::resource('registro', RegistroController::class);
-    Route::get('/panel', [VistasController::class, 'index'])->middleware('auth')->name('panel');
+        Route::get('participantes/{participante}/regitro-show', [RegistroController::class, 'showparticipante'])
+            ->name('participante.registro.show');
 
+        Route::get('participantes/{participante}/regitro-pdf', [RegistroController::class, 'exportpdf'])
+            ->name('participante.registro.pdf');
+    });
+
+    // 🔒 Solo Administrador puede eliminar participantes
+    Route::delete('participantes/{participante}', [ParticipanteController::class, 'destroy'])
+        ->middleware('role:Administrador')
+        ->name('participantes.destroy');
 });
 
-
-Route::group(['middleware' => [RoleMiddleware::using(['Administrador', 'Participante'])]], function () {
-    Route::resource('usuarios', UsuarioController::class);
-
-});
+// Route::group(['middleware' => [RoleMiddleware::using(['Administrador', 'Participante'])]], function () {
+//     Route::resource('usuarios', UsuarioController::class);
+// });

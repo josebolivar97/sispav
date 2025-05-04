@@ -16,6 +16,7 @@ use Spatie\Permission\Models\Role;
 
 class ParticipanteController extends Controller
 {
+    
 
     public function index()
     {
@@ -41,7 +42,7 @@ class ParticipanteController extends Controller
 
 
 
-        $usuario->assignRole(2);
+        $usuario->assignRole(3);
 
         // Agregar el ID del usuario al array del request
         $data = $request->all();
@@ -73,6 +74,12 @@ class ParticipanteController extends Controller
 
     public function destroy(Participante $participante)
     {
+        // Eliminar primero el usuario relacionado
+        if ($participante->user) {
+            $participante->user->delete();
+        }
+
+        // Luego eliminar al participante
         $participante->delete();
 
         return back()->with('eliminar', 'delete');
