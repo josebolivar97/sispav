@@ -12,6 +12,7 @@ use App\Http\Controllers\YearController;
 use App\Models\Participante;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Middleware\RoleMiddleware;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('/auth/login');
@@ -34,8 +35,19 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
+    // 🧠 Redirección dinámica según rol
     Route::get('/dashboard', function () {
-        return redirect()->route('panel');
+        $user = Auth::user();
+
+        if ($user->hasRole('Administrador') || $user->hasRole('Usuario')) {
+            return redirect()->route('registro.index');
+        }
+
+        if ($user->hasRole('Participante')) {
+            return redirect()->route('panel');
+        }
+
+        return redirect()->route('panel'); // Fallback
     })->name('dashboard');
 
     Route::get('/panel', [VistasController::class, 'index'])->name('panel');
