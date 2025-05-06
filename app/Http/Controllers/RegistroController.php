@@ -58,10 +58,9 @@ class RegistroController extends Controller
      */
     public function edit(Participante $registro)
     {
-        //
 
         dd($registro);
-        return view('registro.create');
+        return view('registro.edit');
     }
 
     /**
