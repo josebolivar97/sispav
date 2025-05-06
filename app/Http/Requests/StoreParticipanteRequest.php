@@ -22,7 +22,7 @@ class StoreParticipanteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dni' => 'required|max:8',
+            'dni' => 'required|max:8|unique:participantes,dni',
             'nombres' => 'required|max:15',
             'apellido_paterno' => 'required|max:100',
             'apellido_materno' => 'required|max:100',

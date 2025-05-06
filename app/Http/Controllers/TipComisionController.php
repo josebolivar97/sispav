@@ -32,7 +32,7 @@ class TipComisionController extends Controller
     {
         TipComision::create($request->all());
 
-        return redirect()->route('tipocomision.index')->with('success', 'Usuario creado correctamente.');
+        return redirect()->route('tipocomision.index')->with('success', 'Tipo de Comision creado correctamente.');
     }
 
     /**

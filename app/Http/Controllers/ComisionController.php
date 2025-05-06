@@ -39,7 +39,7 @@ class ComisionController extends Controller
     public function store(StoreComisionRequest $request)
     {
         Comision::create($request->all());
-        return redirect()->route('comision.index')->with('success', 'Usuario creado correctamente.');
+        return redirect()->route('comision.index')->with('success', 'Comision creado correctamente.');
     }
 
     /**

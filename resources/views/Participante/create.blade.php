@@ -18,7 +18,7 @@
                                 <h3 class="text-uppercase">Datos Personales</h3>
                             </div>
                             <div class="form-row align-items-end">
-                            
+
                                 <div class="form-group col-md-4">
                                     <label>DNI</label>
                                     <input type="text" class="form-control" name="dni" value="{{ old('dni') }}">

@@ -26,6 +26,7 @@ class StoreEventoRequest extends FormRequest
             'lugar' => 'required|max:50',
             'fech_aperturra' => 'required|date',
             'fech_cierre' => 'required|date',
+            'anio' => 'required|max:4',
         ];
     }
 }

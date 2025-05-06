@@ -79,7 +79,8 @@
                                         </font>
                                     </b> <a class="float-right">
                                         <font style="vertical-align: inherit;">
-                                            <p style="margin: 0; vertical-align: inherit;">{{ $participante->f_nacimiento }}
+                                            <p style="margin: 0; vertical-align: inherit;">
+                                                {{ \Carbon\Carbon::parse($participante->f_nacimiento)->format('d-m-Y') }}
                                             </p>
                                         </font>
                                     </a>
@@ -199,50 +200,6 @@
                             </tbody>
                         </table>
 
-                        {{-- <table class="table table-striped text-center">
-                            <thead class="thead-dark text-center">
-                                <tr>
-                                    <th>N°</th>
-                                    <th>Evento</th>
-                                    <th>Reconocimiento</th>
-                                    <th>Lugar</th>
-                                    <th>Fecha</th>
-                                    <th>Pdf</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($registro as $regi)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $regi->institucion }}</td>
-                                        <td>{{ $regi->institucion }}</td>
-                                        <td>{{ $regi->evento->lugar }}</td>
-                                        <td>{{ $regi->evento->fech_aperturra }}</td>
-                                        <td width="140px">
-                                            <a href="{{ asset('storage/' . $regi->pdf_reconocimiento) }}"
-                                                class="btn btn-outline-danger btn-sm" target="_blank">
-                                                <i class="fa fa-file-pdf"></i>
-                                            </a>
-                                        </td>
-                                        <td width="140px">
-                                            <span class="badge badge-warning">
-                                                <a href="{{ route('registro.edit', $regi->id) }}"
-                                                    class="btn btn-outline-success btn-sm"><i
-                                                        class="fas fa-lg fa-edit"></i></a>
-                                                <form action="{{ route('registro.destroy', $regi->id) }}" method="post"
-                                                    onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                                    class="d-inline"> @csrf @method('delete') <button type="submit"
-                                                        class="btn btn-outline-danger btn-sm"><i
-                                                            class="fas fa-lg fa-trash"></i></button></form>
-
-
-                                            </span>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table> --}}
                     </div>
                 </div>
             </div>

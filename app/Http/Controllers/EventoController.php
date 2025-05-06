@@ -31,7 +31,7 @@ class EventoController extends Controller
     public function store(StoreEventoRequest $request)
     {
         Evento::create($request->all());
-        return redirect()->route('evento.index');
+        return redirect()->route('evento.index')->with('success', 'Evento creado correctamente.');
     }
 
     /**

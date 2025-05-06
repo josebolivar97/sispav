@@ -153,10 +153,10 @@
                                 </li>
                             </ul>
 
-                            <a href="{{ route('participante.registro.pdf', $participante->id) }}"
+                            {{-- <a href="{{ route('participante.registro.pdf', $participante->id) }}"
                                 class="btn btn-danger mb-3" target="_blank">
                                 <i class="fa fa-file-pdf"></i> Descargar Informe PDF
-                            </a>
+                            </a> --}}
                         </div>
                     </form>
                 </div>

@@ -36,8 +36,7 @@
                                     @endcan
                                     @can('tipocomision.destroy')
                                         <form action="{{ route('comision.destroy', $part->id) }}" method="post"
-                                            onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');"
-                                            class="d-inline"> @csrf @method('delete') <button type="submit"
+                                            class="d-inline form-eliminar"> @csrf @method('delete') <button type="submit"
                                                 class="btn btn-outline-danger btn-sm"><i
                                                     class="fas fa-lg fa-trash"></i></button></form>
                                     @endcan
@@ -57,8 +56,46 @@
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: "{{ session('success') }}",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                });
+            });
+        </script>
+    @endif
+
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Confirmación al eliminar
+            const forms = document.querySelectorAll('.form-eliminar');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Detiene el envío del formulario
+
+                    Swal.fire({
+                        title: "¿Estás seguro?",
+                        text: "¡No podrás revertir esto!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Sí, ¡elimínalo!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // Envía el formulario si el usuario confirma
+                        }
+                    });
+                });
+            });
+
+            // Inicializar DataTable
             $('#tabla-comision').DataTable({
                 responsive: true,
                 autoWidth: false,
@@ -69,8 +106,4 @@
         });
     </script>
 @endsection
-@section('js')
-    <script>
-        console.log("Hi, I'm using the Laravel-AdminLTE package! helooo");
-    </script>
-@stop
+

@@ -30,6 +30,17 @@
                                     </div>
 
                                     <div class="form-group col-md-4 mt-2">
+                                        <label for="estado">Estado</label>
+                                        <select name="estado" id="estado" class="form-control">
+                                            <option value="1" {{ old('estado', $participante->estado) == 1 ? 'selected' : '' }}>ACTIVO</option>
+                                            <option value="0" {{ old('estado', $participante->estado) == 0 ? 'selected' : '' }}>INACTIVO</option>
+                                        </select>
+                                        @error('estado')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-4 mt-2">
                                         <label>Nombres</label>
                                         <input type="text" class="form-control" name="nombres"
                                             value="{{ old('nombres', $participante->nombres) }}">
@@ -68,7 +79,7 @@
                                     </div>
                                     <div class="form-group col-md-4 mt-2">
                                         <label>Email</label>
-                                        <input type="text" class="form-control" name="f_nacimiento"
+                                        <input type="text" class="form-control" name="email"
                                             value="{{ old('email', $participante->email) }}">
 
                                         @error('f_nacimiento')

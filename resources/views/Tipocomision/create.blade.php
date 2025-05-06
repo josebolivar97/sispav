@@ -14,7 +14,7 @@
                     <form action="{{ route('tipocomision.store') }}" method="post">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-8 mt-2">  
+                            <div class="form-group col-md-8 mt-2">
                                 <label>Nombre</label>
                                 <input type="text" class="form-control" name="nom_tipcomision" value="{{ old('nom_tipcomision') }}">
                                 @error('nom_tipcomision')

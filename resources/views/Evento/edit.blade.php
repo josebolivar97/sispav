@@ -32,6 +32,14 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6 mt-2">
+                                <label>Año</label>
+                                <input type="text" class="form-control" name="anio"
+                                    value="{{ old('anio', $evento->anio) }}">
+                                @error('anio')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6 mt-2">
                                 <label>Fecha de Apertura</label>
                                 <input type="date" class="form-control" name="fech_aperturra"
                                     value="{{ old('fech_aperturra', $evento->fech_aperturra) }}">

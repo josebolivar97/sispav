@@ -16,13 +16,13 @@ use Spatie\Permission\Models\Role;
 
 class ParticipanteController extends Controller
 {
-    
+
 
     public function index()
     {
         $participante = Participante::with('comision')->get();
 
-        return view('Participante.index', compact('participante'));
+        return view('participante.index', compact('participante'));
     }
 
     public function create()
@@ -63,7 +63,7 @@ class ParticipanteController extends Controller
     public function edit(Participante $participante)
     {
         $comision = Comision::all();
-        return view('participantes.edit', compact('participante', 'comision'));
+        return view('participante.edit', compact('participante', 'comision'));
     }
 
     public function update(Request $request, Participante $participante)

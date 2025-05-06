@@ -31,8 +31,8 @@ return new class extends Migration
                 ->restrictOnDelete()
                 ->restrictOnUpdate();
             $table->foreignId('id_user')
-                ->constrained('users')
-                ->onDelete('cascade');
+                ->constrained('users');
+            $table->bigInteger('estado')->default(1);
             $table->timestamps();
         });
     }

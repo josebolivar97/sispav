@@ -8,7 +8,7 @@ class Participante extends Model
 {
     //protected $table = 'participantes';
 
-    protected $fillable = ['dni', 'nombres', 'apellido_paterno', 'apellido_materno', 'f_nacimiento', 'departamento', 'provincia', 'distrito', 'profesion', 'l_residencia', 'organizacion', 'email', 'celular', 'id_comision', 'id_user'];
+    protected $fillable = ['dni', 'nombres', 'apellido_paterno', 'apellido_materno', 'f_nacimiento', 'departamento', 'provincia', 'distrito', 'profesion', 'l_residencia', 'organizacion', 'email', 'celular', 'id_comision', 'id_user', 'estado'];
 
     public function Comision()
     {
