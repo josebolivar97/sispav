@@ -11,14 +11,14 @@
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('participante.registro.edit', $participante->id) }}" method="post"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('registro.update', $registro->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="form-row">
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre de la Institución</label>
                                 <input type="text" class="form-control" name="institucion"
-                                    value="{{ old('institucion') }}">
+                                    value="{{ old('institucion', $registro->institucion) }}">
                                 @error('institucion')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -27,7 +27,7 @@
                             <div class="form-group col-md-6 mt-2">
                                 <label>Nombre de Reconocimiento</label>
                                 <input type="text" class="form-control" name="nom_reconocimiento"
-                                    value="{{ old('nom_reconocimiento') }}">
+                                    value="{{ old('nom_reconocimiento', $registro->nom_reconocimiento) }}">
                                 @error('nom_reconocimiento')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

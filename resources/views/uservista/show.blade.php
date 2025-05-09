@@ -164,7 +164,7 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>N°</th>
-                                        <th>Evento</th>
+                                        <th>Institución</th>
                                         <th>Reconocimiento</th>
                                         <th>Lugar</th>
                                         <th>Fecha</th>
@@ -177,7 +177,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $regi->institucion }}</td>
-                                            <td>{{ $regi->institucion }}</td>
+                                            <td>{{ $regi->nom_reconocimiento }}</td>
                                             <td>{{ $regi->evento->lugar }}</td>
                                             <td>{{ $regi->evento->fech_aperturra }}</td>
                                             <td width="140px">

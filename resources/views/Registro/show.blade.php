@@ -160,7 +160,7 @@
                             <thead class="text-center">
                                 <tr>
                                     <th>N°</th>
-                                    <th>Evento</th>
+                                    <th>Institución</th>
                                     <th>Reconocimiento</th>
                                     <th>Lugar</th>
                                     <th>Fecha</th>
@@ -173,9 +173,9 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $regi->institucion }}</td>
-                                        <td>{{ $regi->institucion }}</td>
+                                        <td>{{ $regi->nom_reconocimiento }}</td>
                                         <td>{{ $regi->evento->lugar }}</td>
-                                        <td>{{ $regi->evento->fech_aperturra }}</td>
+                                        <td> {{ \Carbon\Carbon::parse($regi->evento->fech_aperturra)->format('d-m-Y') }}</td>
                                         <td width="140px">
                                             <a href="{{ asset('storage/' . $regi->pdf_reconocimiento) }}"
                                                 class="btn btn-outline-danger btn-sm" target="_blank">

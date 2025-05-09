@@ -14,20 +14,22 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Auth;
 
+
+
+// Route::get('/clear', function () {
+
+//     Artisan::call('cache:clear');
+//     Artisan::call('config:clear');
+//     Artisan::call('config:cache');
+//     Artisan::call('view:clear');
+
+//     return "Cleared!";
+// });
+
 Route::get('/', function () {
     return view('/auth/login');
 });
 
-// Route::get('/clear', function() {
-
-//    Artisan::call('cache:clear');
-//    Artisan::call('config:clear');
-//    Artisan::call('config:cache');
-//    Artisan::call('view:clear');
-
-//    return "Cleared!";
-
-// });
 
 Route::middleware([
     'auth',

@@ -56,11 +56,13 @@ class RegistroController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Participante $registro)
+    public function edit(Registro $registro)
     {
 
-        dd($registro);
-        return view('registro.edit');
+        // dd($registro);
+        $participante= Participante::all();
+        $eventos= Evento::all();
+        return view('registro.edit', compact('registro', 'participante', 'eventos'));
     }
 
     /**
@@ -68,7 +70,8 @@ class RegistroController extends Controller
      */
     public function update(Request $request, Registro $registro)
     {
-        //
+        $registro->update($request->all());
+        return redirect()->route('registro.index');
     }
 
     /**
